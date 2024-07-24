@@ -1,9 +1,10 @@
 package net.cebularz.additioanltrialeffects;
 
 import com.mojang.logging.LogUtils;
-import net.cebularz.additioanltrialeffects.effect.ModEffects;
+import net.cebularz.additioanltrialeffects.entity.animal.ModWolfVariants;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.entity.animal.WolfVariants;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -45,7 +46,7 @@ public class AdditionalTrialEffects
 
         modEventBus.addListener(this::commonSetup);
 
-        ModEffects.register(modEventBus);
+        ModWolfVariants.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.register(this);
 

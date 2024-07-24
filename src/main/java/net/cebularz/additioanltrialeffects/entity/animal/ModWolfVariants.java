@@ -1,7 +1,6 @@
 package net.cebularz.additioanltrialeffects.entity.animal;
 
 import net.cebularz.additioanltrialeffects.AdditionalTrialEffects;
-import net.cebularz.additioanltrialeffects.effect.ExplosionHazard;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderSet;
 import net.minecraft.core.Registry;
@@ -26,14 +25,25 @@ import java.util.Objects;
 import java.util.Optional;
 
 public class ModWolfVariants {
+
+
+
+
+
+
+
+
+    public ModWolfVariants() {
+    }
     public static final DeferredRegister<WolfVariant> WOLF_VARIANTS
             = DeferredRegister.create(Registries.WOLF_VARIANT, AdditionalTrialEffects.MOD_ID);
-    public static final ResourceKey<WolfVariant> WHITESPOTTED = createKey("white_spotted");
-    private static ResourceKey<WolfVariant> createKey(String pName) {
-        return ResourceKey.create(Registries.WOLF_VARIANT, ResourceLocation.withDefaultNamespace(pName));
-    }
-    public static final RegistryObject<MobEffect> WHITE_SPOTTED = WOLF_VARIANTS.register("explosive_hazard",
-            ()-> new WolfVariant(0,WHITESPOTTED,"wolf_white_spotted",Biomes.SNOWY_TAIGA);
+
+    public static final ResourceLocation whitespottednormal = ResourceLocation.withDefaultNamespace("entity/wolf/" + "white_spotted");
+    public static final ResourceLocation whitespottedtamed = ResourceLocation.withDefaultNamespace("entity/wolf/" + "white_spotted" + "_tame");
+    public static final ResourceLocation whitespottedangry = ResourceLocation.withDefaultNamespace("entity/wolf/" + "white_spotted" + "_angry");
+
+    public static final RegistryObject<WolfVariant> WHITE_SPOTTED = WOLF_VARIANTS.register("wolf_white_spotted",
+            ()-> new WolfVariant(whitespottednormal,whitespottedtamed,whitespottedangry,Biomes.SNOWY_TAIGA));
     public static void register(IEventBus eventBus) {
         WOLF_VARIANTS.register(eventBus);
     }
