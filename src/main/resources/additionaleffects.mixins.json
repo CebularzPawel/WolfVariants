@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.cebularz.additioanltrialeffects.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "additioanltrialeffects.refmap.json",
+  "mixins": [
+    "MoreWolfVarsMixin",
+    "VanillaWolfVariant"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}
