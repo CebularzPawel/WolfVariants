@@ -1,9 +1,9 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "net.cebularz.additioanltrialeffects.mixin",
+  "package": "net.cebularz.morewolfs.mixin",
   "compatibilityLevel": "JAVA_8",
-  "refmap": "additioanltrialeffects.refmap.json",
+  "refmap": "morewolfs.refmap.json",
   "mixins": [
     "MoreWolfVarsMixin",
     "VanillaWolfVariant"

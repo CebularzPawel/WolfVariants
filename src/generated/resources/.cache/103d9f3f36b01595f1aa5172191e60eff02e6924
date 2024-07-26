@@ -1,2 +1,5 @@
-// 1.21	2024-07-25T21:21:44.9874122	Registries
-8b8f4d35f186148ab7247f890021585fabb777e7 data/additionaltrialeffects/wolf_variant/cus_spotted.json
+// 1.21	2024-07-26T19:06:55.4045248	Registries
+a5cb15ab231b771b069686c51e5246dc778ea344 data/morewolfs/wolf_variant/golden.json
+64b1240752b9a129ef685c9db604f305343b8acc data/morewolfs/wolf_variant/mountain.json
+77ecafbcde9761196f13aead1cf92144fe27b369 data/morewolfs/wolf_variant/patch.json
+3fed3fe552ad926e4204e75c47c69e58c044dd46 data/morewolfs/wolf_variant/white_spotted.json
