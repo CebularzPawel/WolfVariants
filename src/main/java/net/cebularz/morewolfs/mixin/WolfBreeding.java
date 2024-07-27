@@ -2,6 +2,7 @@ package net.cebularz.morewolfs.mixin;
 
 import net.cebularz.morewolfs.entity.animal.ModWolfVariants;
 import net.minecraft.core.Holder;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
@@ -10,48 +11,56 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Wolf;
 import net.minecraft.world.entity.animal.WolfVariant;
 import net.minecraft.world.entity.animal.WolfVariants;
-import org.checkerframework.common.reflection.qual.Invoke;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
+import java.util.Arrays;
+import java.util.List;
+
 @Mixin(Wolf.class)
 public abstract class WolfBreeding {
-    private static boolean isInArray(ResourceKey<WolfVariant>[] array, ResourceKey<WolfVariant> number) {
+
+    @Shadow public abstract Holder<WolfVariant> getVariant();
+
+    private static final List<ResourceKey<WolfVariant>> WHITE_SPOTTED_PARENTS = Arrays.asList(
+            WolfVariants.SPOTTED.unwrapKey().orElseThrow(),
+            WolfVariants.PALE.unwrapKey().orElseThrow()
+    );
+
+    private static boolean isInArray(ResourceKey<WolfVariant>[] array, ResourceKey<WolfVariant> key) {
         for (ResourceKey<WolfVariant> element : array) {
-            if (element == number) {
+            if (element.equals(key)) {
                 return true;
             }
         }
         return false;
     }
-    @Shadow public abstract Holder<WolfVariant> getVariant();
-    @SuppressWarnings("unchecked")
-    private static final ResourceKey<WolfVariant>[] WHITE_SPOTTED_PARENTS =
-            (ResourceKey<WolfVariant>[]) new ResourceKey<?>[] {
-                    WolfVariants.SPOTTED,
-                    WolfVariants.PALE
-            };
-    @Inject(method = "getBreedOffspring(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/AgeableMob;)Lnet/minecraft/world/entity/animal/Wolf;",at = @At("TAIL"))
-    public void getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent, CallbackInfoReturnable<Wolf> cir) {
-        Wolf wolf = (Wolf)EntityType.WOLF.create(pLevel);
-        System.out.println("ZERO STEP");
-        if (wolf != null && pOtherParent instanceof Wolf wolf1) {
-            System.out.println("FIRST STEP");
-                if(wolf.getVariant()!=wolf1.getVariant()){
-                    ResourceKey<WolfVariant> variantwolf =(ResourceKey<WolfVariant>) wolf.getVariant();
-                    ResourceKey<WolfVariant> variantwolf1 =(ResourceKey<WolfVariant>) wolf1.getVariant();
-                    System.out.println("SOMETHING BEFORE");
-                    if(isInArray(WHITE_SPOTTED_PARENTS, variantwolf)&&isInArray(WHITE_SPOTTED_PARENTS, variantwolf1)){
-                        Holder<WolfVariant> whitespottedvariant =(Holder<WolfVariant>) ModWolfVariants.WHITESPOTTED;
 
-                        wolf.setVariant(whitespottedvariant);
-                        System.out.println("CHANGING TYPE");
+    @Inject(method = "getBreedOffspring", at = @At("HEAD"), cancellable = true)
+    public void getBreedOffspring(ServerLevel level, AgeableMob otherParent, CallbackInfoReturnable<Wolf> cir) {
+        if (otherParent instanceof Wolf wolf1) {
+            Holder<WolfVariant> variantHolder = this.getVariant();
+            Holder<WolfVariant> variantHolder1 = wolf1.getVariant();
+
+            ResourceKey<WolfVariant> variant = variantHolder.unwrapKey().orElseThrow();
+            ResourceKey<WolfVariant> variant1 = variantHolder1.unwrapKey().orElseThrow();
+
+            if (!variant.equals(variant1)) {
+                if (isInArray(WHITE_SPOTTED_PARENTS, variant) && isInArray(WHITE_SPOTTED_PARENTS, variant1)) {
+                    Wolf offspring = EntityType.WOLF.create(level);
+                    if (offspring != null) {
+                        Holder<WolfVariant> whitespottedVariant = level.registryAccess()
+                                .registryOrThrow(Registries.WOLF_VARIANT)
+                                .getHolderOrThrow(ModWolfVariants.WHITESPOTTED.unwrapKey().orElseThrow());
+                        offspring.setVariant(whitespottedVariant);
+                        cir.setReturnValue(offspring);
+                        cir.cancel();
                     }
                 }
             }
+        }
     }
-
 }
