@@ -1,0 +1,6 @@
+{
+  "angry_texture": "morewolfs:entity/wolf/wolf_mountain_angry",
+  "biomes": "minecraft:meadow",
+  "tame_texture": "morewolfs:entity/wolf/wolf_mountain_tame",
+  "wild_texture": "morewolfs:entity/wolf/wolf_mountain"
+}

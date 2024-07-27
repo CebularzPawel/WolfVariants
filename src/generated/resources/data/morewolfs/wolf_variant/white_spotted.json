@@ -1,0 +1,6 @@
+{
+  "angry_texture": "morewolfs:entity/wolf/wolf_white_spotted_angry",
+  "biomes": "minecraft:taiga",
+  "tame_texture": "morewolfs:entity/wolf/wolf_white_spotted_tame",
+  "wild_texture": "morewolfs:entity/wolf/wolf_white_spotted"
+}

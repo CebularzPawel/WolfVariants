@@ -25,7 +25,6 @@ import java.util.Random;
 
 @Mixin(Wolf.class)
 public abstract class MoreWolfVarsMixin implements IWolfVariants {
-    @Shadow public abstract void setVariant(Holder<WolfVariant> p_332660_);
 
     @Unique
     private Holder<WolfVariant> currentVariantHolder;
@@ -38,7 +37,7 @@ public abstract class MoreWolfVarsMixin implements IWolfVariants {
                     level.registryAccess().registryOrThrow(Registries.WOLF_VARIANT).getHolderOrThrow(ModWolfVariants.WHITESPOTTED)
             };
             this.currentVariantHolder = variants[rand.nextInt(variants.length)];
-            this.setVariant(this.currentVariantHolder);
+            this.setWolfVariant(this.currentVariantHolder);
             ((Wolf)(Object)this).getPersistentData().putBoolean("CustomVariant", true);
         }
     }
@@ -55,8 +54,29 @@ public abstract class MoreWolfVarsMixin implements IWolfVariants {
         if (pCompound.contains("Variant")) {
             Level level = ((Wolf) (Object) this).getCommandSenderWorld();
             ResourceLocation variantLocation = ResourceLocation.parse(pCompound.getString("Variant"));
-            this.currentVariantHolder = level.registryAccess().registryOrThrow(Registries.WOLF_VARIANT).getHolder(ResourceKey.create(Registries.WOLF_VARIANT, variantLocation)).orElseThrow();
-            this.setVariant(this.currentVariantHolder);
+            this.currentVariantHolder = level.registryAccess().registryOrThrow(Registries.WOLF_VARIANT)
+                    .getHolder(ResourceKey.create(Registries.WOLF_VARIANT, variantLocation)).orElseThrow();
+            this.setWolfVariant(this.currentVariantHolder);
+        }
+    }
+
+    @Inject(method = "getBreedOffspring(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/AgeableMob;)Lnet/minecraft/world/entity/animal/Wolf;",
+            at = @At("RETURN"), cancellable = true)
+    private void onCreateChild(ServerLevel serverLevel, AgeableMob ageableMob, CallbackInfoReturnable<Wolf> cir) {
+        if (ageableMob instanceof Wolf) {
+            Wolf otherParent = (Wolf) ageableMob;
+            Wolf child = cir.getReturnValue();
+
+            Holder<WolfVariant> parentVariant1 = ((IWolfVariants) (Object) this).getVariantHolder();
+            Holder<WolfVariant> parentVariant2 = ((IWolfVariants) (Object) otherParent).getVariantHolder();
+
+            if ((parentVariant1.is(ModWolfVariants.MOUNTAIN) && parentVariant2.is(ModWolfVariants.GOLDEN)) ||
+                    (parentVariant1.is(ModWolfVariants.GOLDEN) && parentVariant2.is(ModWolfVariants.MOUNTAIN))) {
+                Holder<WolfVariant> newVariant = serverLevel.registryAccess().registryOrThrow(Registries.WOLF_VARIANT)
+                        .getHolderOrThrow(ModWolfVariants.WHITESPOTTED);
+                ((IWolfVariants) child).setWolfVariant(newVariant);
+                child.getPersistentData().putBoolean("CustomVariant", true);
+            }
         }
     }
 
@@ -64,4 +84,19 @@ public abstract class MoreWolfVarsMixin implements IWolfVariants {
     public ResourceLocation getVariant() {
         return this.currentVariantHolder.unwrapKey().orElseThrow().location();
     }
+
+    @Override
+    public void setWolfVariant(Holder<WolfVariant> variant) {
+        this.currentVariantHolder = variant;
+        this.setVariant(variant);
+    }
+
+    @Unique
+    @Override
+    public Holder<WolfVariant> getVariantHolder() {
+        return this.currentVariantHolder;
+    }
+
+    @Shadow
+    public abstract void setVariant(Holder<WolfVariant> p_332660_);
 }

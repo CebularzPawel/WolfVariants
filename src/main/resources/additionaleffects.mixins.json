@@ -6,8 +6,7 @@
   "refmap": "morewolfs.refmap.json",
   "mixins": [
     "MoreWolfVarsMixin",
-    "VanillaWolfVariant",
-    "WolfBreeding"
+    "VanillaWolfVariant"
   ],
   "client": [
   ],
