@@ -27,25 +27,25 @@ import java.util.Random;
 public abstract class MoreWolfVarsMixin implements IWolfVariants {
 
     @Unique
-    private Holder<WolfVariant> currentVariantHolder;
+    private Holder<WolfVariant> wolfVariants$currentVariantHolder;
 
     @Inject(method = "<init>", at = @At("RETURN"))
     private void onInit(EntityType<?> type, Level level, CallbackInfo ci) {
-        if (this.currentVariantHolder == null) {
+        if (this.wolfVariants$currentVariantHolder == null) {
             Random rand = new Random();
             Holder<WolfVariant>[] variants = new Holder[]{
                     level.registryAccess().registryOrThrow(Registries.WOLF_VARIANT).getHolderOrThrow(ModWolfVariants.WHITESPOTTED)
             };
-            this.currentVariantHolder = variants[rand.nextInt(variants.length)];
-            this.setWolfVariant(this.currentVariantHolder);
+            this.wolfVariants$currentVariantHolder = variants[rand.nextInt(variants.length)];
+            this.wolfVariants$setWolfVariant(this.wolfVariants$currentVariantHolder);
             ((Wolf)(Object)this).getPersistentData().putBoolean("CustomVariant", true);
         }
     }
 
     @Inject(method = "addAdditionalSaveData", at = @At("HEAD"))
     private void addAdditionalSaveData(CompoundTag compound, CallbackInfo ci) {
-        if (this.currentVariantHolder != null) {
-            compound.putString("Variant", this.currentVariantHolder.unwrapKey().orElseThrow().location().toString());
+        if (this.wolfVariants$currentVariantHolder != null) {
+            compound.putString("Variant", this.wolfVariants$currentVariantHolder.unwrapKey().orElseThrow().location().toString());
         }
     }
 
@@ -54,47 +54,46 @@ public abstract class MoreWolfVarsMixin implements IWolfVariants {
         if (pCompound.contains("Variant")) {
             Level level = ((Wolf) (Object) this).getCommandSenderWorld();
             ResourceLocation variantLocation = ResourceLocation.parse(pCompound.getString("Variant"));
-            this.currentVariantHolder = level.registryAccess().registryOrThrow(Registries.WOLF_VARIANT)
+            this.wolfVariants$currentVariantHolder = level.registryAccess().registryOrThrow(Registries.WOLF_VARIANT)
                     .getHolder(ResourceKey.create(Registries.WOLF_VARIANT, variantLocation)).orElseThrow();
-            this.setWolfVariant(this.currentVariantHolder);
+            this.wolfVariants$setWolfVariant(this.wolfVariants$currentVariantHolder);
         }
     }
 
     @Inject(method = "getBreedOffspring(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/AgeableMob;)Lnet/minecraft/world/entity/animal/Wolf;",
-            at = @At("RETURN"), cancellable = true)
+            at = @At("RETURN"))
     private void onCreateChild(ServerLevel serverLevel, AgeableMob ageableMob, CallbackInfoReturnable<Wolf> cir) {
-        if (ageableMob instanceof Wolf) {
-            Wolf otherParent = (Wolf) ageableMob;
+        if (ageableMob instanceof Wolf otherParent) {
             Wolf child = cir.getReturnValue();
 
-            Holder<WolfVariant> parentVariant1 = ((IWolfVariants) (Object) this).getVariantHolder();
-            Holder<WolfVariant> parentVariant2 = ((IWolfVariants) (Object) otherParent).getVariantHolder();
+            Holder<WolfVariant> parentVariant1 = ((IWolfVariants) this).wolfVariants$getVariantHolder();
+            Holder<WolfVariant> parentVariant2 = ((IWolfVariants) otherParent).wolfVariants$getVariantHolder();
 
             if ((parentVariant1.is(ModWolfVariants.MOUNTAIN) && parentVariant2.is(ModWolfVariants.GOLDEN)) ||
                     (parentVariant1.is(ModWolfVariants.GOLDEN) && parentVariant2.is(ModWolfVariants.MOUNTAIN))) {
                 Holder<WolfVariant> newVariant = serverLevel.registryAccess().registryOrThrow(Registries.WOLF_VARIANT)
                         .getHolderOrThrow(ModWolfVariants.WHITESPOTTED);
-                ((IWolfVariants) child).setWolfVariant(newVariant);
+                ((IWolfVariants) child).wolfVariants$setWolfVariant(newVariant);
                 child.getPersistentData().putBoolean("CustomVariant", true);
             }
         }
     }
 
     @Override
-    public ResourceLocation getVariant() {
-        return this.currentVariantHolder.unwrapKey().orElseThrow().location();
+    public ResourceLocation wolfVariants$getVariant() {
+        return this.wolfVariants$currentVariantHolder.unwrapKey().orElseThrow().location();
     }
 
     @Override
-    public void setWolfVariant(Holder<WolfVariant> variant) {
-        this.currentVariantHolder = variant;
+    public void wolfVariants$setWolfVariant(Holder<WolfVariant> variant) {
+        this.wolfVariants$currentVariantHolder = variant;
         this.setVariant(variant);
     }
 
     @Unique
     @Override
-    public Holder<WolfVariant> getVariantHolder() {
-        return this.currentVariantHolder;
+    public Holder<WolfVariant> wolfVariants$getVariantHolder() {
+        return this.wolfVariants$currentVariantHolder;
     }
 
     @Shadow

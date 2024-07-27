@@ -6,9 +6,9 @@ import net.minecraft.world.entity.animal.WolfVariant;
 
 public interface IWolfVariants
 {
-    ResourceLocation getVariant();
+    ResourceLocation wolfVariants$getVariant();
 
-    Holder<WolfVariant> getVariantHolder();
+    Holder<WolfVariant> wolfVariants$getVariantHolder();
 
-    void setWolfVariant(Holder<WolfVariant> newVariant);
+    void wolfVariants$setWolfVariant(Holder<WolfVariant> newVariant);
 }

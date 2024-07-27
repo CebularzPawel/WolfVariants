@@ -17,7 +17,7 @@ public class ModWolfRenderer extends WolfRenderer
     @Override
     public @NotNull ResourceLocation getTextureLocation(@NotNull Wolf pEntity) {
         if (pEntity instanceof IWolfVariants) {
-            return ((IWolfVariants) pEntity).getVariant();
+            return ((IWolfVariants) pEntity).wolfVariants$getVariant();
         }
         return super.getTextureLocation(pEntity);
     }
