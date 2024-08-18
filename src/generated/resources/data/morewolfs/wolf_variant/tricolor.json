@@ -1,0 +1,6 @@
+{
+  "angry_texture": "morewolfs:entity/wolf/wolf_tricolor_angry",
+  "biomes": "minecraft:sunflower_plains",
+  "tame_texture": "morewolfs:entity/wolf/wolf_tricolor_tame",
+  "wild_texture": "morewolfs:entity/wolf/wolf_tricolor"
+}

@@ -1,0 +1,6 @@
+{
+  "angry_texture": "morewolfs:entity/wolf/wolf_ginger_angry",
+  "biomes": "minecraft:cherry_grove",
+  "tame_texture": "morewolfs:entity/wolf/wolf_ginger_tame",
+  "wild_texture": "morewolfs:entity/wolf/wolf_ginger"
+}
