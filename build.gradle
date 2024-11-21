@@ -27,7 +27,10 @@ base {
 
 mixin {
     add sourceSets.main, "${mod_id}.refmap.json"
-    //config "${mod_id}.mixins.json"
+    config 'mixins.morewolfsmixins.json'
+
+    debug.verbose = true
+    debug.export = true
 }
 // Mojang ships Java 21 to end users in 1.20.5+, so your mod should target Java 21.
 java.toolchain.languageVersion = JavaLanguageVersion.of(21)

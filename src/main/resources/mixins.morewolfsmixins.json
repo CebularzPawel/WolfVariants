@@ -5,8 +5,7 @@
   "compatibilityLevel": "JAVA_8",
   "refmap": "morewolfs.refmap.json",
   "mixins": [
-    "MoreWolfVarsMixin",
-    "VanillaWolfVariant"
+    "MoreWolfVarsMixin"
   ],
   "client": [
   ],

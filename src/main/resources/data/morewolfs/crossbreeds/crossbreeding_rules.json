@@ -1,0 +1,69 @@
+{
+  "crossbreeding_rules": {
+    "morewolfs:white_spotted": {
+      "morewolfs:mountain": "morewolfs:patch",
+      "morewolfs:fluffy": "morewolfs:white_fluffy",
+      "morewolfs:tricolor": "morewolfs:patch"
+    },
+    "morewolfs:mountain": {
+      "morewolfs:white_spotted": "morewolfs:patch",
+      "morewolfs:golden": "morewolfs:golden",
+      "morewolfs:fluffy": "morewolfs:fluffy",
+      "morewolfs:patch": "morewolfs:white_spotted",
+      "morewolfs:ginger": "morewolfs:ginger"
+    },
+    "morewolfs:golden": {
+      "morewolfs:white_spotted": "morewolfs:golden",
+      "morewolfs:mountain": "morewolfs:golden",
+      "morewolfs:patch": "morewolfs:golden",
+      "morewolfs:fluffy": "morewolfs:white_fluffy",
+      "morewolfs:tricolor": "morewolfs:golden"
+    },
+    "morewolfs:patch": {
+      "morewolfs:white_spotted": "morewolfs:patch",
+      "morewolfs:mountain": "morewolfs:patch",
+      "morewolfs:golden": "morewolfs:golden",
+      "morewolfs:fluffy": "morewolfs:fluffy",
+      "morewolfs:ginger": "morewolfs:ginger",
+      "morewolfs:tricolor": "morewolfs:patch"
+    },
+    "morewolfs:fluffy": {
+      "morewolfs:white_spotted": "morewolfs:fluffy",
+      "morewolfs:mountain": "morewolfs:fluffy",
+      "morewolfs:golden": "morewolfs:white_fluffy",
+      "morewolfs:patch": "morewolfs:fluffy",
+      "morewolfs:ginger": "morewolfs:ginger",
+      "morewolfs:white_fluffy": "morewolfs:white_fluffy"
+    },
+    "morewolfs:white_fluffy": {
+      "morewolfs:white_spotted": "morewolfs:white_fluffy",
+      "morewolfs:mountain": "morewolfs:white_fluffy",
+      "morewolfs:golden": "morewolfs:white_fluffy",
+      "morewolfs:patch": "morewolfs:white_fluffy",
+      "morewolfs:fluffy": "morewolfs:white_fluffy"
+    },
+    "morewolfs:black_fluffy": {
+      "morewolfs:white_spotted": "morewolfs:black_fluffy",
+      "morewolfs:mountain": "morewolfs:black_fluffy",
+      "morewolfs:golden": "morewolfs:black_fluffy",
+      "morewolfs:patch": "morewolfs:black_fluffy",
+      "morewolfs:fluffy": "morewolfs:black_fluffy"
+    },
+    "morewolfs:ginger": {
+      "morewolfs:white_spotted": "morewolfs:ginger",
+      "morewolfs:mountain": "morewolfs:ginger",
+      "morewolfs:golden": "morewolfs:ginger",
+      "morewolfs:fluffy": "morewolfs:ginger",
+      "morewolfs:patch": "morewolfs:ginger",
+      "morewolfs:tricolor": "morewolfs:ginger"
+    },
+    "morewolfs:tricolor": {
+      "morewolfs:white_spotted": "morewolfs:tricolor",
+      "morewolfs:mountain": "morewolfs:tricolor",
+      "morewolfs:golden": "morewolfs:tricolor",
+      "morewolfs:fluffy": "morewolfs:fluffy",
+      "morewolfs:patch": "morewolfs:patch",
+      "morewolfs:ginger": "morewolfs:ginger"
+    }
+  }
+}
