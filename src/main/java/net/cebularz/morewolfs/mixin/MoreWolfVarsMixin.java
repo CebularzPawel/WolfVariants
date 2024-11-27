@@ -1,5 +1,6 @@
 package net.cebularz.morewolfs.mixin;
 
+import com.mojang.serialization.Codec;
 import net.cebularz.morewolfs.entity.animal.ModWolfVariants;
 import net.cebularz.morewolfs.util.CrossBreedingManager;
 import net.cebularz.morewolfs.util.IWolfVariants;
@@ -26,6 +27,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 @Mixin(Wolf.class)
 public abstract class MoreWolfVarsMixin  {
@@ -38,22 +40,32 @@ public abstract class MoreWolfVarsMixin  {
     @Overwrite
     @Nullable
     public Wolf getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
-        // Create a new wolf for the offspring
         Wolf wolf = (Wolf) EntityType.WOLF.create(pLevel);
 
-        // Check if both parents are golden
         if (pOtherParent instanceof Wolf otherWolf) {
+
+
             Wolf firstwolf = ((Wolf) (Object) this);
-            CompoundTag firstparentnbt = firstwolf.getPersistentData();
-            CompoundTag secondparentnbt = otherWolf.getPersistentData();
 
 
-            String firstParentVariant =  "morewolfs:golden";
-            String secondParentVariant = "morewolfs:fluffy";
+            CompoundTag compoundfirstwolf = new CompoundTag();
+            firstwolf.save(compoundfirstwolf);
 
 
-            String crossbreed = CrossBreedingManager.getOffspringVariant(firstParentVariant,secondParentVariant);
-            System.out.println("\nnewvariant: "+crossbreed+" parent1variant: "+firstParentVariant+ " parent2variant: "+secondParentVariant);
+            CompoundTag compoundotherwolf = new CompoundTag();
+            otherWolf.save(compoundotherwolf);
+
+
+
+            String wolfvariant = compoundfirstwolf.getString("variant");
+            String  otherwolfvariant =  compoundotherwolf.getString("variant");
+
+
+
+
+            String crossbreed = CrossBreedingManager.getOffspringVariant(wolfvariant,otherwolfvariant);
+
+            System.out.println("\nnewvariant: "+crossbreed+" parent1variant: "+wolfvariant+ " parent2variant: "+otherwolfvariant);
 
             //if(crossbreed!="") {
 
