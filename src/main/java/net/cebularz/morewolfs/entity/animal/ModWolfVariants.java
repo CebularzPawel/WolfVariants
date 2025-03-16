@@ -59,9 +59,9 @@ public class ModWolfVariants extends WolfVariants
         register(pContext, MOUNTAIN, "wolf_mountain", Biomes.MEADOW);
         register(pContext, GOLDEN, "wolf_golden", Biomes.FLOWER_FOREST);
         register(pContext, PATCH, "wolf_patch", Biomes.PLAINS);
-        register(pContext, FLUFFY, "wolf_fluffy", Biomes.BIRCH_FOREST);
+        register(pContext, FLUFFY, "wolf_fluffy", Biomes.DARK_FOREST);
         register(pContext, WHITE_FLUFFY, "wolf_white_fluffy", Biomes.SNOWY_PLAINS);
-        register(pContext, BLACK_FLUFFY, "wolf_black_fluffy", Biomes.DARK_FOREST);
+        register(pContext, BLACK_FLUFFY, "wolf_black_fluffy", Biomes.BIRCH_FOREST);
         register(pContext, GINGER, "wolf_ginger", Biomes.CHERRY_GROVE);
         register(pContext, TRICOLOR, "wolf_tricolor", Biomes.SUNFLOWER_PLAINS);
 

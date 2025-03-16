@@ -37,12 +37,13 @@ public abstract class MoreWolfVarsMixin  {
 
 
 
-    @Overwrite
-    @Nullable
-    public Wolf getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent) {
-        Wolf wolf = (Wolf) EntityType.WOLF.create(pLevel);
 
-        if (pOtherParent instanceof Wolf otherWolf) {
+    @Inject(method = "getBreedOffspring", at = @At("RETURN"), cancellable = true)
+
+    public Wolf getBreedOffspring(ServerLevel pLevel, AgeableMob pOtherParent,CallbackInfoReturnable<Wolf> cir) {
+
+        Wolf wolf = cir.getReturnValue();
+        if (pOtherParent instanceof Wolf otherWolf && wolf!=null) {
 
 
             Wolf firstwolf = ((Wolf) (Object) this);
@@ -63,19 +64,16 @@ public abstract class MoreWolfVarsMixin  {
 
 
 
-            String crossbreed = CrossBreedingManager.getOffspringVariant(wolfvariant,otherwolfvariant);
+            String crossbreed = CrossBreedingManager.getCrossbreedResult(wolfvariant,otherwolfvariant);
 
-            System.out.println("\nnewvariant: "+crossbreed+" parent1variant: "+wolfvariant+ " parent2variant: "+otherwolfvariant);
 
-            //if(crossbreed!="") {
+            if (crossbreed !=null) {
 
                 CompoundTag nbt = new CompoundTag();
                 nbt.putString("variant", crossbreed);
 
-                // Apply the variant to the offspring
                 wolf.readAdditionalSaveData(nbt);
-            //}
-
+            }
         }
 
 

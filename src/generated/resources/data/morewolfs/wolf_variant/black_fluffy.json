@@ -1,6 +1,6 @@
 {
   "angry_texture": "morewolfs:entity/wolf/wolf_black_fluffy_angry",
-  "biomes": "minecraft:dark_forest",
+  "biomes": "minecraft:birch_forest",
   "tame_texture": "morewolfs:entity/wolf/wolf_black_fluffy_tame",
   "wild_texture": "morewolfs:entity/wolf/wolf_black_fluffy"
 }

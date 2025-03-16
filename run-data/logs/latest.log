@@ -1,17 +1,27 @@
-[30lip2024 19:24:26.488] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forge_userdev_data, --assetIndex, 17, --assetsDir, C:\Users\HARDPC\.gradle\caches\forge_gradle\assets, --gameDir, ., --mod, morewolfs, --all, --output, C:\Users\HARDPC\Desktop\WolfVariants2\src\generated\resources, --existing, C:\Users\HARDPC\Desktop\WolfVariants2\src\main\resources]
-[30lip2024 19:24:26.492] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.2+13-LTS
-[30lip2024 19:24:26.494] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.2.1 starting: java version 21.0.2 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
-[30lip2024 19:24:26.699] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forge_userdev_data
-[30lip2024 19:24:26.911] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=jar:file:///C:/Users/HARDPC/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar!/ Service=ModLauncher Env=UNKNOWN
-[30lip2024 19:24:28.257] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
-[30lip2024 19:24:29.078] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forge_userdev_data' with arguments [--gameDir, ., --assetsDir, C:\Users\HARDPC\.gradle\caches\forge_gradle\assets, --assetIndex, 17, --mod, morewolfs, --all, --output, C:\Users\HARDPC\Desktop\WolfVariants2\src\generated\resources, --existing, C:\Users\HARDPC\Desktop\WolfVariants2\src\main\resources]
-[30lip2024 19:24:34.021] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 51.0.18, for MC 1.21 with MCP 20240613.102039
-[30lip2024 19:24:34.021] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v51.0.18 Initialized
-[30lip2024 19:24:34.035] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Opening jdk.naming.dns/com.sun.jndi.dns to java.naming
-[30lip2024 19:24:34.538] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [morewolfs]
-[30lip2024 19:24:34.646] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/HARDPC/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21-51.0.18_mapped_parchment_2024.07.07-1.21/forge-1.21-51.0.18_mapped_parchment_2024.07.07-1.21.jar%230!/assets/.mcassetsroot' uses unexpected schema
-[30lip2024 19:24:34.647] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/HARDPC/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21-51.0.18_mapped_parchment_2024.07.07-1.21/forge-1.21-51.0.18_mapped_parchment_2024.07.07-1.21.jar%230!/data/.mcassetsroot' uses unexpected schema
-[30lip2024 19:24:34.736] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
-[30lip2024 19:24:35.007] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 269 ms
-[30lip2024 19:24:35.007] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 270 ms
-[30lip2024 19:24:35.011] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 9, old count: 10, new count: 10, removed stale: 0, written: 0
+[16mar2025 12:01:31.888] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forge_userdev_data, --assetIndex, 17, --assetsDir, C:\Users\HARDPC\.gradle\caches\forge_gradle\assets, --gameDir, ., --mod, morewolfs, --all, --output, C:\Users\HARDPC\Desktop\WolfVariants\src\generated\resources, --existing, C:\Users\HARDPC\Desktop\WolfVariants\src\main\resources, --mixin.config, mixins.morewolfsmixins.json]
+[16mar2025 12:01:31.890] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.2+13-LTS
+[16mar2025 12:01:31.892] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 10.2.1 starting: java version 21.0.2 by Eclipse Adoptium; OS Windows 10 arch amd64 version 10.0
+[16mar2025 12:01:31.990] [main/INFO] [net.minecraftforge.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because launch target is forge_userdev_data
+[16mar2025 12:01:32.085] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.5 Source=jar:file:///C:/Users/HARDPC/.gradle/caches/modules-2/files-2.1/org.spongepowered/mixin/0.8.5/9d1c0c3a304ae6697ecd477218fa61b850bf57fc/mixin-0.8.5.jar!/ Service=ModLauncher Env=UNKNOWN
+[16mar2025 12:01:33.047] [main/INFO] [net.minecraftforge.fml.loading.moddiscovery.JarInJarDependencyLocator/]: No dependencies to load found. Skipping!
+[16mar2025 12:01:33.767] [main/INFO] [mixin/]: Compatibility level JAVA_8 specified by mixins.morewolfsmixins.json is lower than the default level supported by the current mixin service (JAVA_16).
+[16mar2025 12:01:33.772] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forge_userdev_data' with arguments [--gameDir, ., --assetsDir, C:\Users\HARDPC\.gradle\caches\forge_gradle\assets, --assetIndex, 17, --mod, morewolfs, --all, --output, C:\Users\HARDPC\Desktop\WolfVariants\src\generated\resources, --existing, C:\Users\HARDPC\Desktop\WolfVariants\src\main\resources]
+[16mar2025 12:01:33.792] [main/INFO] [mixin/]: Attempting to load Fernflower decompiler (Threaded mode)
+[16mar2025 12:01:33.793] [main/INFO] [mixin/]: Fernflower could not be loaded, exported classes will not be decompiled. NoClassDefFoundError: org/jetbrains/java/decompiler/main/extern/IResultSaver
+[16mar2025 12:01:33.800] [main/INFO] [mixin/]: Preparing mixins for MixinEnvironment[DEFAULT]
+[16mar2025 12:01:33.800] [main/INFO] [mixin/]: Selecting config mixins.morewolfsmixins.json
+[16mar2025 12:01:33.803] [main/WARN] [mixin/]: Reference map 'morewolfs.refmap.json' for mixins.morewolfsmixins.json could not be read. If this is a development environment you can ignore this message
+[16mar2025 12:01:33.804] [main/INFO] [mixin/]: Preparing mixins.morewolfsmixins.json (1)
+[16mar2025 12:01:33.828] [main/WARN] [mixin/]: Mixin environment was unable to detect the current side, sided mixins will not be applied
+[16mar2025 12:01:37.712] [main/INFO] [mixin/]: Mixing MoreWolfVarsMixin from mixins.morewolfsmixins.json into net.minecraft.world.entity.animal.Wolf
+[16mar2025 12:01:37.734] [main/WARN] [mixin/]: mixins.morewolfsmixins.json:MoreWolfVarsMixin: Class version 65 required is higher than the class version supported by the current version of Mixin (JAVA_8 supports class version 52)
+[16mar2025 12:01:39.019] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Forge mod loading, version 51.0.18, for MC 1.21 with MCP 20240613.102039
+[16mar2025 12:01:39.019] [modloading-worker-0/INFO] [net.minecraftforge.common.MinecraftForge/FORGE]: MinecraftForge v51.0.18 Initialized
+[16mar2025 12:01:39.034] [modloading-worker-0/INFO] [net.minecraftforge.common.ForgeMod/FORGEMOD]: Opening jdk.naming.dns/com.sun.jndi.dns to java.naming
+[16mar2025 12:01:39.593] [main/INFO] [net.minecraftforge.data.loading.DatagenModLoader/]: Initializing Data Gatherer for mods [morewolfs]
+[16mar2025 12:01:39.645] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/HARDPC/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21-51.0.18_mapped_parchment_2024.07.07-1.21/forge-1.21-51.0.18_mapped_parchment_2024.07.07-1.21.jar%230!/assets/.mcassetsroot' uses unexpected schema
+[16mar2025 12:01:39.646] [main/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/C:/Users/HARDPC/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.21-51.0.18_mapped_parchment_2024.07.07-1.21/forge-1.21-51.0.18_mapped_parchment_2024.07.07-1.21.jar%230!/data/.mcassetsroot' uses unexpected schema
+[16mar2025 12:01:39.737] [main/INFO] [net.minecraft.data.DataGenerator/]: Starting provider: Registries
+[16mar2025 12:01:39.985] [main/INFO] [net.minecraft.data.DataGenerator/]: Registries finished after 248 ms
+[16mar2025 12:01:39.986] [main/INFO] [net.minecraft.data.DataGenerator/]: All providers took: 249 ms
+[16mar2025 12:01:39.989] [main/INFO] [net.minecraft.data.HashCache/]: Caching: total files: 9, old count: 9, new count: 10, removed stale: 0, written: 2
